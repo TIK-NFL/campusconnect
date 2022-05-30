@@ -1,0 +1,285 @@
+openapi: 3.0.0
+info:
+  version: '1'
+  title: ''
+  description: ''
+paths: {}
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/pascalseeland/ecs/1
+components:
+  schemas:
+    CourseUrl:
+      type: object
+      required: 
+        - "cms_lecture_id"
+        - "ecs_course_url"
+      description: Data schema for JSON representation of CampusConnect course_urls resource
+      properties:
+        cms_lecture_id:
+          type: string
+        ecs_course_url:
+          type: string
+          format: uri
+        lms_course_url:
+          type: array
+          items:
+            type: object
+            required: 
+              - "title"
+              - "url"
+            properties:
+              title:
+                type: string
+              url:
+                type: string
+                format: uri
+            additionalProperties: false
+      additionalProperties: false
+    Course:
+      description: Data schema for JSON representation of CampusConnect courses resource
+      type: object
+      required: ["lectureID", "title"]
+      properties:
+        lectureID:
+          type: string
+        title:
+          type: string
+        organisation:
+          type: string
+        number:
+          type: string
+        term:
+          type: string
+        termID:
+          type: string
+        lectureType:
+          type: string
+        hoursPerWeek:
+          type: integer
+        groupScenario:
+          type: integer
+        degreeProgrammes:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              title:
+                type: string
+              code:
+                type: string
+              courseUnitYearOfStudy:
+                type: object
+                properties:
+                  from:
+                    type: integer
+                  to:
+                    type: integer
+                additionalProperties: false
+            additionalProperties: false
+        allocations:
+          type: array
+          items:
+            type: object
+            properties:
+              parentID:
+                type: string
+              order:
+                type: integer
+            additionalProperties: false
+        comment1:
+          type: string
+        comment2:
+          type: string
+        comment3:
+          type: string
+        recommendedReading:
+          type: string
+        organisationalUnits:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              title:
+                type: string
+            additionalProperties: false
+        prerequisites:
+          type: string
+        lectureAssessmentType:
+          type: string
+        lectureTopics:
+          type: string
+        linkToCurriculum:
+          type: string
+        targetAudiences:
+          type: array
+          items:
+            type: string
+        links:
+          type: array
+          items:
+            type: object
+            properties:
+              href:
+                type: string
+                format: uri
+              title:
+                type: string
+            additionalProperties: false
+        linkToLecture:
+          type: object
+          properties:
+            href:
+              type: string
+              format: uri
+            title:
+              type: string
+          additionalProperties: false
+        groups:
+          type: array
+          items:
+            type: object
+            required: ["id"]
+            properties:
+              id:
+                type: string
+              title:
+                type: string
+              comment:
+                type: string
+              datesAndVenues:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    cycle:
+                      type: string
+                    venue:
+                      type: string
+                    firstDate:
+                      type: object
+                      properties:
+                        startDatetime:
+                          type: string
+                        endDatetime:
+                          type: string
+                    lastDate:
+                      type: object
+                      properties:
+                        startDatetime:
+                          type: string
+                        endDatetime:
+                          type: string
+                      additionalProperties: false
+                  additionalProperties: false
+              singleDatesAndVenues:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    venue:
+                      type: string
+                    date:
+                      type: object
+                      properties:
+                        startDatetime:
+                          type: string
+                        endDatetime:
+                          type: string
+                      additionalProperties: false
+                  additionalProperties: false
+              maxParticipants:
+                type: integer
+              takesPlace:
+                type: boolean
+              lecturers:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    firstName:
+                      type: string
+                    lastName:
+                      type: string
+                  additionalProperties: false
+              canceledDates:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    datetime:
+                      type: string
+                    comment:
+                      type: string
+                  additionalProperties: false
+            additionalProperties: false
+        modules:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              title:
+                type: string
+              number:
+                type: string
+              credits:
+                type: integer
+              hoursPerWeek:
+                type: integer
+              duration:
+                type: string
+              cycle:
+                type: string
+              degreeProgrammes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    title:
+                      type: string
+                    code:
+                      type: string
+                    courseUnitYearOfStudy:
+                      type: object
+                      properties:
+                        from:
+                          type: integer
+                        to:
+                          type: integer
+                      additionalProperties: false
+                  additionalProperties: false
+              finalExamination:
+                type: string
+              label:
+                type: string
+              regulationsVersion:
+                type: string
+              prerequisites:
+                type: string
+              learningObjectives:
+                type: string
+              recommendedReading:
+                type: string
+              description:
+                type: string
+              workload:
+                type: string
+              studyAssessmentMethods:
+                type: array
+                items:
+                  type: string
+              examinationAssessmentMethods:
+                type: array
+                items:
+                  type: string
+            additionalProperties: false
+      additionalProperties: false
