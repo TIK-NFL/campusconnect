@@ -1,32 +1,74 @@
 {
-  "$schema": "http://json-schema.org/draft-03/schema#",
-  "description":"Data schema for JSON representation of CampusConnect course_members resource",
-  "type":"object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Data schema for JSON representation of CampusConnect course_members resource",
+  "type": "object",
+  "required": [
+    "lectureID"
+  ],
   "properties": {
-    "lectureID": {"type":"string", "required":true},
+    "lectureID": {
+      "type": "string"
+    },
     "members": {
-      "type":"array",
+      "type": "array",
       "items": {
-        "type":"object",
+        "type": "object",
+        "required": [
+          "personID",
+          "role"
+        ],
         "properties": {
-          "personID": {"type":"string", "required":true},
-          "personIDtype": { "enum": [ "ecs_ePPN", "ecs_loginUID", "ecs_login", "ecs_uid", "ecs_email", "ecs_PersonalUniqueCode", "ecs_custom" ], "required":false },
-          "role": {"type":"integer", "required":true},
+          "personID": {
+            "type": "string"
+          },
+          "personIDtype": {
+            "enum": [
+              "ecs_ePPN",
+              "ecs_loginUID",
+              "ecs_login",
+              "ecs_uid",
+              "ecs_email",
+              "ecs_PersonalUniqueCode",
+              "ecs_custom"
+            ]
+          },
+          "role": {
+            "type": "integer"
+          },
           "groups": {
-            "type":"array",
+            "type": "array",
             "items": {
-              "type":"object",
+              "type": "object",
               "properties": {
-                "num": {"type":"integer", "required":true},
-                "role": {"type":"integer"}
+                "role": {
+                  "type": "integer"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "num": {
+                  "type": "integer"
+                }
               },
-              "additionalProperties" : false
+              "oneOf": [
+                {
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "required": [
+                    "num"
+                  ]
+                }
+              ],
+              "additionalProperties": false
             }
           }
         },
-        "additionalProperties" : false
+        "additionalProperties": false
       }
     }
   },
-  "additionalProperties" : false
+  "additionalProperties": false
 }
